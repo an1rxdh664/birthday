@@ -854,24 +854,8 @@
           padding: 20px 15px 10px 15px;
           font-family: "Dancing Script", cursive;
           font-size: 0.8rem;
-        }
-
-        /* Stack left and right on small screens and constrain text area */
-        .letter__border .letter .content__letter {
-          flex-direction: column; /* stack columns vertically */
-          gap: 8px;
-        }
-        .content__letter .left,
-        .content__letter .right {
-          width: 100%;
-          box-sizing: border-box;
-          border-right: none; /* remove the desktop divider */
-          padding: 8px;
-        }
-        .content__letter .right .text__letter {
-          margin-top: 0;
-          /* On small screens, reserve visible area and allow internal scroll */
-          max-height: 140px;
+          /* Add scroll only — do not change layout or positioning */
+          max-height: 160px;
           overflow-y: auto;
           -webkit-overflow-scrolling: touch;
         }
