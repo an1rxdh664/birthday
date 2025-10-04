@@ -594,6 +594,18 @@
         padding-top: 1.5rem;
         padding-bottom: 70px;
       }
+      /* Ensure the letter content doesn't overflow: allow wrapping, preserve newlines,
+         and constrain height with scroll when content is long. */
+      .letter__border .letter .content__letter .right .text__letter {
+        /* allow long words/emojis to wrap */
+        word-wrap: break-word;
+        overflow-wrap: anywhere;
+        /* preserve the line breaks inserted by the typewriter script */
+        white-space: pre-wrap;
+        /* limit the height so the popup remains inside viewport; show scrollbar if needed */
+        max-height: calc(100% - 120px);
+        overflow-y: auto;
+      }
       .letter__border .letter .content__letter .left {
         position: relative;
         width: 50%;
@@ -842,6 +854,26 @@
           padding: 20px 15px 10px 15px;
           font-family: "Dancing Script", cursive;
           font-size: 0.8rem;
+        }
+
+        /* Stack left and right on small screens and constrain text area */
+        .letter__border .letter .content__letter {
+          flex-direction: column; /* stack columns vertically */
+          gap: 8px;
+        }
+        .content__letter .left,
+        .content__letter .right {
+          width: 100%;
+          box-sizing: border-box;
+          border-right: none; /* remove the desktop divider */
+          padding: 8px;
+        }
+        .content__letter .right .text__letter {
+          margin-top: 0;
+          /* On small screens, reserve visible area and allow internal scroll */
+          max-height: 140px;
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
         }
 
         .content__letter .right .love__img {
@@ -1130,12 +1162,12 @@
 
     <div id="copy">
       <p class="text-center text-white text-sm">
-        Made with 💖 <a href="#">for Kalishini Aurat</a>
+        Made with 💖
       </p>
     </div>
   </body>
   <script>
-    let datetxt = "15 July 2003";
+    let datetxt = "05 October 2005";
     let titleLetter = "To You";
 
     let datatxtletter =
